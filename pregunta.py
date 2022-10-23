@@ -13,9 +13,9 @@ import pandas as pd
 
 
 def ingest_data():
+    nombrescol="cluster,cantidad_de_palabras_clave,porcentaje_de_palabras_clave,principales_palabras_clave".split(',')
+    datos=pd.read_fwf('clusters_report.txt', widths=[9, 16, 16, 76], skiprows=4, names=nombrescol,)
 
     #
-    # Inserte su código aquí
-    #
 
-    return df
+    return datos
