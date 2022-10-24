@@ -44,5 +44,6 @@ def ingest_data():
         datosprueba.iat[i,3]= resttotal[i]
     datosprueba['porcentaje_de_palabras_clave']=datosprueba.porcentaje_de_palabras_clave.apply(lambda x: x.replace(',', '.')).apply(lambda x: x.replace(' %', ''))
     datosprueba['principales_palabras_clave']=datosprueba.principales_palabras_clave.apply(lambda x: x.replace('    ', ' ')).apply(lambda x: x.replace('  ', ' '))
-
+    datosprueba['porcentaje_de_palabras_clave']=pd.to_numeric(datosprueba['porcentaje_de_palabras_clave'])
+    
     return datosprueba
