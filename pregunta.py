@@ -44,6 +44,12 @@ def ingest_data():
         datosprueba.iat[i,3]= resttotal[i]
     datosprueba['porcentaje_de_palabras_clave']=datosprueba.porcentaje_de_palabras_clave.apply(lambda x: x.replace(',', '.')).apply(lambda x: x.replace(' %', ''))
     datosprueba['porcentaje_de_palabras_clave']=pd.to_numeric(datosprueba['porcentaje_de_palabras_clave'])
+    datosprueba.iat[7,3]=datosprueba.iat[7,3].replace('electri', 'electric').replace('energy system', 'energy system,').replace(' cogeneration',', cogeneration').replace(' solar',', solar')
+    datosprueba.iat[8,3]=datosprueba.iat[8,3].replace('geneti', 'genetic').replace(' evolutionary', ', evolutionary,').replace('squar', 'square').replace('evolutionary,','evolutionary')
+    datosprueba.iat[9,3]=datosprueba.iat[9,3].replace('batterie', 'batteries').replace('hybri', 'hybrid').replace(' distributed-control', ', distributed-control')
+    datosprueba.iat[10,3]=datosprueba.iat[10,3].replace('gasification', 'gasification,')
+    datosprueba.iat[11,3]=datosprueba.iat[11,3].replace('loa', 'load').replace('neura network', 'neural network').replace('powe generation','power generation')
+    datosprueba.iat[12,3]=datosprueba.iat[12,3].replace('energ ', 'energy ').replace('exergy', 'exergy,').replace('simulation system','simulation, system')
     datosprueba['principales_palabras_clave']=datosprueba.principales_palabras_clave.apply(lambda x: x.replace('    ', ' '))
     datosprueba['principales_palabras_clave']=datosprueba.principales_palabras_clave.apply(lambda x: x.replace('   ', ' '))
     datosprueba['principales_palabras_clave']=datosprueba.principales_palabras_clave.apply(lambda x: x.replace('  ', ' '))
