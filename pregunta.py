@@ -39,7 +39,10 @@ def ingest_data():
     claves=datosprueba.index.values
     valores= list(range(13))
     dict_from_list = dict(zip(claves, valores))
-    datosprueba.rename(index= dict_from_list)
+    datosprueba=datosprueba.rename(index= dict_from_list)
     for i in range(0,13):
         datosprueba.iat[i,3]= resttotal[i]
+    datosprueba['porcentaje_de_palabras_clave']=datosprueba.porcentaje_de_palabras_clave.apply(lambda x: x.replace(',', '.')).apply(lambda x: x.replace(' %', ''))
+    datosprueba['principales_palabras_clave']=datosprueba.principales_palabras_clave.apply(lambda x: x.replace('    ', ' ')).apply(lambda x: x.replace('  ', ' '))
+
     return datosprueba
